@@ -1,0 +1,35 @@
+import java.util.Arrays;
+import java.util.Random;
+
+public class solveMaze {
+	
+	public static void main(String[] args) {
+		
+		int row, col;
+		Random rand = new Random();
+		row = rand.nextInt(10+1);
+		col = rand.nextInt(10+1);
+		int srow = rand.nextInt(row+1);
+		int scol = rand.nextInt(col+1);
+		
+		char[][] maze = new char[row][col];
+		
+		for (int i = 0; i < maze.length; i++) {
+	            for (int j = 0; j < maze[i].length; j++) {
+	                maze[i][j] = '#';
+	            }
+	        }
+		System.out.println(row+ "  "+ col);
+		
+		for (int i=0;i<maze.length;i++) {
+			for (int j=1; j<=maze[i].length;j++) {
+				System.out.print(maze[i][j]);
+				}
+			System.out.print("\n");
+			}
+		
+		//mazeGenerator();
+		
+	}
+	
+}

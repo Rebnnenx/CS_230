@@ -1,0 +1,18 @@
+import java.util.Random;
+
+public class solveMaze {
+	
+	public static void main(String[] args) {
+		
+		int row, col;
+		Random rand = new Random();
+		row = rand.nextInt(10);
+		col = rand.nextInt(10);
+		int srow = rand.nextInt(10);
+		int scol = rand.nextInt(10);
+		
+		mazeGenerator();
+		
+	}
+	
+}
