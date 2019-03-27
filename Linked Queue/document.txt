@@ -1,0 +1,11 @@
+The Arrow Program: 
+A Software Engineering Case Study for CS1 {Research reported in this article was partially sponsored by the National Science Foundation: NSF Grant # 0000000000.}
+
+Iyad A. Ajwa{Research reported in this article was partially sponsored by Ashland University: AU Faculty Development Grant # 1111111111.}
+Department of Mathematics and Computer Science
+Ashland University
+Ashland, Ohio 44805, USA
+
+ABSTRACT
+This paper describes The Arrow Program, a thorough programming assignment suitable for an introductory level course in computer programming. The assignment teaches students how to construct programs modularly from functions and allows them to gain a well-rounded understanding of the three types of control structures: sequential, selection, and repetition. Moreover, the assignment is suitable for implementation in both programming paradigms: procedural (using C/C++) and object-oriented (using Java).
+
