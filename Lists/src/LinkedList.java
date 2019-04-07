@@ -24,7 +24,13 @@ public class LinkedList<T extends Comparable<T>> {
 		targetNode = firstNode;
 		trailTargetNode = firstNode;
 		found = false;
-		
+		while(targetNode != null && !targetNode.data.equals(target)) {
+			trailTargetNode=targetNode;
+			targetNode=targetNode.next;
+		}
+		if(targetNode!=null) {
+			found = true;
+		}
 		
 		
 		return;
@@ -85,7 +91,8 @@ public class LinkedList<T extends Comparable<T>> {
 			firstNode = lastNode = newNode;
 			return;
 		}
-		
+		lastNode.next=newNode;
+		lastNode=newNode;
 		
 		return;
 	}
@@ -98,6 +105,8 @@ public class LinkedList<T extends Comparable<T>> {
 			firstNode = lastNode = newNode;
 			return;
 		}
+		newNode.next=firstNode;
+		firstNode=newNode;
 		
 		
 		return;
@@ -111,7 +120,11 @@ public class LinkedList<T extends Comparable<T>> {
 			System.out.println( "List is empty...");
 			return data;
 		}
-		
+		data = firstNode.data;
+		if(firstNode==lastNode) 
+			firstNode=lastNode=null;
+		else
+			firstNode=firstNode.next;
 		
 		return data;
 	}
@@ -124,8 +137,17 @@ public class LinkedList<T extends Comparable<T>> {
 			System.out.println( "List is empty...");
 			return data;
 		}
+		data = lastNode.data;
+		if(firstNode==lastNode) { 
+			firstNode=lastNode=null;
+			return data;
+		}
 		
-		
+		Node<T> currentNode=firstNode;
+		while(currentNode.next != lastNode)
+			currentNode=currentNode.next;
+		lastNode=currentNode;
+		lastNode.next=null;
 		return data;
 	}
 	
@@ -136,7 +158,16 @@ public class LinkedList<T extends Comparable<T>> {
 		if( !found)
 			return;
 		
-		
+		if(firstNode==targetNode) {
+			removeFromFront();
+			return;
+		}
+		if(targetNode==lastNode) {
+			removeFromBack();
+			return;
+		}
+		trailTargetNode.next=targetNode.next;
+		targetNode=null;
 		return;
 	}
 
