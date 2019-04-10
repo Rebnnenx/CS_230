@@ -46,16 +46,42 @@ public class Polynomials <T extends Comparable<T>>{
 	    input = fileReader.nextLine();
 	    String terms[] =input.split(" ");
 	    
-	    for (int i=0; i<terms.length;i=+2) {
+	    for (int i=0; i<terms.length;i=i+2) {
 	    	PolyNum temp = new PolyNum(Integer.parseInt(terms[i]),Integer.parseInt(terms[i+1]));
 	    	poly1.insertAtBack(temp);
 	    }
 	    
-	    
 	    input = fileReader.nextLine();
-	    terms=input.split(" ");
-	}
+	    terms =input.split(" ");
+	    
+	    for (int i=0; i<terms.length;i=i+2) {
+	    	PolyNum temp = new PolyNum(Integer.parseInt(terms[i]),Integer.parseInt(terms[i+1]));
+	    	poly2.insertAtBack(temp);
+	    }
+	    
+	    //System.out.println(poly2.toString()+ "\n"+displayPolynomial(poly2));
 
+	}
+	
+	public static String displayPolynomial(LinkedList<PolyNum> poly) {
+		String str="";
+		int size = poly.size();
+		
+		for(int i=0; i<size; i++) {
+			PolyNum term =poly.removeFromFront();
+			if(term.getCoeficent()!=0) {
+				if(i==0)
+					str= str +term.getCoeficent();
+				else
+					str=str+" + "+ term.getCoeficent()+"x^"+term.getExponent();
+			}
+		poly.insertAtBack(term);
+		}
+		return str;
+	}
+	
+	
+	
 	
 	
 }
