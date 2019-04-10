@@ -16,12 +16,12 @@ public class DLList<T> {
 	
 	private int nodeCount;
 	private Node<T> firstNode;
-	private Node<T> lastNode;
+	//Attempting to create class without this lastNode pointer
 	
 	public DLList() {
 		
 		this.firstNode = null;
-		this.lastNode = null;
+
 		nodeCount = 0;
 	}
 	
@@ -44,8 +44,8 @@ public class DLList<T> {
 
 		this.nodeCount = 0;
 		this.firstNode = null;
-		this.lastNode = null;
 
+		return;
 	}
 
 	public boolean isEmpty() {
@@ -69,7 +69,6 @@ public class DLList<T> {
 		
 		if( isEmpty()) {
 			firstNode = newNode;
-			lastNode = newNode;
 		}
 		else {
 			
@@ -83,7 +82,7 @@ public class DLList<T> {
 		Node<T> newNode = new Node<T>( element);
 		
 		if( isEmpty()) 
-			firstNode = lastNode = newNode;
+			firstNode = newNode;
 		else {
 			
 		}
