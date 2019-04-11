@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+@SuppressWarnings("null")
 public class Polynomials <T extends Comparable<T>>{
 
 	public static void main(String[] args) throws FileNotFoundException{
@@ -48,7 +48,6 @@ public class Polynomials <T extends Comparable<T>>{
 	    System.out.print(displayPolynomial(poly1)+" - "+displayPolynomial(poly2)+ " = ");
 	    polySub= sub(poly1,poly2);
 	    System.out.println(displayPolynomial(polySub));
-	    //System.out.println(polySub);
 	    
 	    System.out.println("\nProgram is now evaluating each polynomial using x= "+ x);
 	    System.out.println("p("+x+") = "+eval(poly1, x));
@@ -58,6 +57,8 @@ public class Polynomials <T extends Comparable<T>>{
 	    System.out.print(displayPolynomial(poly1)+" * "+displayPolynomial(poly2)+ " = ");
 	    polyMult= multiply(poly1, poly2);
 	    System.out.println(displayPolynomial(polyMult));
+	    
+	    System.out.println("\nThe program is now done.\nHave a good day!");
 	    fileReader.close();
 	}
 	
@@ -182,7 +183,7 @@ public static LinkedList<PolyNum> sub(LinkedList<PolyNum> poly1,LinkedList<PolyN
 		return res;
 	}
 
-	@SuppressWarnings("null")
+	
 	
 	public static int eval(LinkedList<PolyNum> poly, int x) {
 		
@@ -200,87 +201,80 @@ public static LinkedList<PolyNum> sub(LinkedList<PolyNum> poly1,LinkedList<PolyN
 	
 	public static LinkedList<PolyNum> multiply(LinkedList<PolyNum> p1,LinkedList<PolyNum> p2){
 		LinkedList<PolyNum> res= new LinkedList<PolyNum>();
+		PolyNum temp3, temp4;
+		temp3=temp4=null;
 		
-		System.out.println(p1.size()+" "+p2.size());
 		for(int i = 0; i < p2.size(); i++) {
 			int add, deg;
 			add=deg=0;
-			System.out.println("test4");
 			for(int j = 0; j < p1.size(); j++) {
+				add=deg=0;
 				deg=i+j;
-				System.out.println("test");
 				int size = res.size();
+				
 				for(int t=0;t<size;t++) {
-					System.out.println("test");
 					PolyNum temp = res.removeFromFront();
 					if(deg == temp.getExponent()) {
 						add= add+temp.getCoeficent();
-						System.out.println("test2");
-						
 					}
+					else
+						res.insertAtBack(temp);
 				}
-				add = add + (p1.removeFromFront().getCoeficent() 
-						     *p2.removeFromFront().getCoeficent());
+				temp3=p1.removeFromFront();
+				temp4=p2.removeFromFront();
+				
+				add = add + ( temp3.getCoeficent()*temp4.getCoeficent());
+				
 				PolyNum temp2= new PolyNum(add, deg);
 				res.insertAtBack(temp2);
+				p1.insertAtBack(temp3);
+				p2.insertAtBack(temp4);
 			}
 		}
-		
 		return res;
 	}
 }
 
 class PolyNum implements Comparable<PolyNum>{
 	
-	
+	private int coef = 0, exponent= 0;
 	
 	@Override
 	public String toString() {
 		return "PolyNum [coef=" + coef + ", exponent=" + exponent + "]";
 	}
-
-	private int coef = 0, exponent= 0;
-	
 	public PolyNum(int coef, int exp) {
 		this.coef = coef;
 		this.exponent=exp;
-		
 		return;
 	}
 	public PolyNum(PolyNum other) {
 		this.coef=other.coef;
 		this.exponent=other.exponent;
-		
 		return;
 	}
 	public PolyNum copy(PolyNum other) {
 		PolyNum poly = new PolyNum(other);
-		
 		return poly;
 	}
 	public PolyNum setTerm(int coef, int exp) {
 		PolyNum poly= new PolyNum(coef, exp);
-		
 		return poly;
 	}
-	
 	public int getCoeficent() {
 		return coef;
 	}
 	public void setCoef(int coef) {
 		this.coef = coef;
 	}
-	
 	public int getExponent() {
 		return exponent;
 	}
 	public void setExponent(int exponent) {
 		this.exponent = exponent;
 	}
-
 	@Override
 	public int compareTo(PolyNum o) {
-		
 		return 0;
 	}
 }
