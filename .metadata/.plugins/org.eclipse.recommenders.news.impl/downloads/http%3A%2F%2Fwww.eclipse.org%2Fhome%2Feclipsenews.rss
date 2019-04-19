@@ -10,6 +10,22 @@
       <link>http://www.eclipse.org</link>
     </image>
      <item>
+      <title><![CDATA[The 2019 IoT Developer Survey Results are Live]]></title>
+      <link><![CDATA[https://blogs.eclipse.org/post/mike-milinkovich/2019-iot-developer-survey-results-are-live]]></link>
+      <description><![CDATA[This year marks the fifth year the Eclipse IoT Working Group has asked the global IoT developer community to share their perceptions, requirements, and priorities.]]></description>
+      <pubDate>Wed, 17 Apr 2019 08:40:00 EST</pubDate>
+      <category>news</category>
+      <pressrelease>0</pressrelease>
+    </item>
+     <item>
+      <title><![CDATA[New Survey of More Than 1,700 IoT Developers Reveals Top Hardware, Software "Stack" Choices]]></title>
+      <link><![CDATA[http://www.globenewswire.com/news-release/2019/04/17/1805318/0/en/New-Survey-of-More-Than-1-700-IoT-Developers-Reveals-Top-Hardware-Software-Stack-Choices.html]]></link>
+      <description><![CDATA[Today, we released the 2019 IoT Developer Survey results that canvassed more than 1,700 developers about their IoT efforts!]]></description>
+      <pubDate>Wed, 17 Apr 2019 08:40:00 EST</pubDate>
+      <category>news</category>
+      <pressrelease>0</pressrelease>
+    </item>
+     <item>
       <title><![CDATA[Renaming Java EE Specifications for Jakarta EE]]></title>
       <link><![CDATA[https://blogs.eclipse.org/post/wayne-beaton/renaming-java-ee-specifications-jakarta-ee]]></link>
       <description><![CDATA[As we prepare to engage in actual specification work, it's time to start thinking about changing the names of the specifications and the projects that contain their artifacts.]]></description>
