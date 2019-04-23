@@ -102,7 +102,7 @@ public class AddressBook<T extends Comparable<T>>{
 						retrieveByZip(book, kb);
 						break;
 					case "7":
-						printAddressBook(book);
+						printAddressBook(book, kb);
 						break;
 					case "0":{
 						exit= true;
@@ -163,15 +163,19 @@ public class AddressBook<T extends Comparable<T>>{
 	private static void retrieveByZip(LinkedList<Address> book, Scanner kb) {
 		System.out.println("Please enter the specified zip code:");
 		String zip=kb.next();
+		int count=0;
 		
 		int size=book.size();
 		for(int i=0; i<size;i++) {
 			Address temp = book.removeFromFront();
 			if(temp.getZip().equals(zip)) {
 				System.out.println(temp+"\n");
+				count++;
 			}
 			book.insertAtBack(temp);
 		}
+		if (count==0)
+			System.out.println("No addresses found with specified zip code.");
 		System.out.print("enter any input to continue:");
 		kb.next();
 		
@@ -204,7 +208,8 @@ public class AddressBook<T extends Comparable<T>>{
 					+ "5)State\n"
 					+ "6)Zip\n"
 					+ "7)Country\n"
-					+ "8)Phone:");
+					+ "8)Phone:\n"
+					+ "0)Return to Main menu without changes");
 			field=kb.nextLine();
 			System.out.println("What do you want to replace the field with?");
 			replacement=kb.nextLine();
@@ -236,7 +241,7 @@ public class AddressBook<T extends Comparable<T>>{
 					temp.setPhone(replacement);
 					break;
 				default :
-					System.out.println("Invalid field. Returning to main manu");
+					System.out.println("Returning to main menu, no changes were made.");
 					pause();
 			}
 			book.insertAtBack(temp);
@@ -309,6 +314,8 @@ public class AddressBook<T extends Comparable<T>>{
 		}
 		if(found) {
 			System.out.println("Entry was found:\n" + temp);
+			System.out.print("\n\nenter any input to continue:");
+			kb.next();
 		}
 		
 	}
@@ -365,7 +372,7 @@ public class AddressBook<T extends Comparable<T>>{
 		}
 		}
 	}
-	public static void printAddressBook(LinkedList<Address> book) {
+	public static void printAddressBook(LinkedList<Address> book, Scanner kb) {
 		int size= book.size();
 		Address temp;
 		for(int i=0; i<size;i++) {
@@ -373,6 +380,8 @@ public class AddressBook<T extends Comparable<T>>{
 			System.out.println(temp+"\n");
 			book.insertAtBack(temp);
 		}
+		System.out.print("\n\nenter any input to continue:");
+		kb.next();
 	}
 	
 	//utility methods
