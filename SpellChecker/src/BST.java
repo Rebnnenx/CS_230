@@ -231,7 +231,64 @@ public class BST<T extends Comparable<T>> {
 					currentNode = currentNode.leftChild;
 			}
 		}
+		
+		if (currentNode == null) {
+			System.out.println(item+ " not found");
+			return;
+		}
+		if(currentNode.leftChild==null && currentNode.rightChild==null) {
+			if(trailCurrentNode.data.compareTo(item)<0)
+				trailCurrentNode.rightChild=null;
+			else 
+				trailCurrentNode.leftChild=null;
+			return;
+		}
+		
+		if(currentNode.leftChild==null && currentNode.rightChild!=null) {
+			if(trailCurrentNode.data.compareTo(item)<0)
+				trailCurrentNode.rightChild=currentNode.rightChild;
+			else 
+				trailCurrentNode.leftChild=currentNode.rightChild;
+			return;
+		}
+		
+		if(currentNode.leftChild!=null && currentNode.rightChild==null){
+			if(trailCurrentNode.data.compareTo(item)<0)
+				trailCurrentNode.rightChild=currentNode.leftChild;
+			else 
+				trailCurrentNode.leftChild=currentNode.leftChild;
+			return;
+		}
+		
+		
+		if( currentNode.leftChild != null && currentNode.rightChild != null) {
+	           
 
+            // The following code is to identify the rightmost child in the left subtree of the currentNode
+            BSTNode<T> ptr = currentNode;              // ptr is used to maintain access to the currentNode
+            trailCurrentNode = currentNode;
+            currentNode = currentNode.leftChild;   // We start descending in the left subtree of currentNode
+           
+            while( currentNode.rightChild != null) {    // continue to go right to identify the rightmost node
+                trailCurrentNode = currentNode;
+                currentNode = currentNode.rightChild;
+            }
+           
+
+            // Once the rightmost child in the left subtree is identified, we need to adjust data and the pointers
+            if( trailCurrentNode.data.compareTo( item) < 0)
+                trailCurrentNode.rightChild = currentNode.leftChild;
+            else
+                trailCurrentNode.leftChild = currentNode.leftChild;
+           
+            ptr.data = currentNode.data;
+           
+            return;
+        }
+		
+			
+			
+			
 		return;
 	}
 
